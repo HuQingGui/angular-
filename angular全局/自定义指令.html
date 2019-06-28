@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <!-- 自定义指令有两种调用方式，虽然文档说有4种，但是后两种使用发现无效，而且从表现上看一个类名，一个注释，和原有的混淆，不推荐！ -->
+    <test-directive></test-directive>
+    <div test-directive></div>
+    <div class="test-directive"></div>
+    <!-- directive: test-directive -->
+</body>
+<script>
+    let app = angular.module('myApp',[]);
+    app.directive('testDirective',()=>{//自定义指令的创建/注册
+        return {
+            restrict : "A",//该属性为限制使用的意思，值为A意味着只能通过属性的方式来调用
+            template:'<h1>自定义指令</h1>'
+        }
+    })
+    // E 作为元素名使用
+    // A 作为属性使用
+    // C 作为类名使用
+    // M 作为注释使用
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+        <!-- ng-repeat 指令对于集合中（数组中）的每个项会 克隆一次 HTML 元素。 像v-for-->
+        <div ng-app="" ng-init="names=['Jani','Hege','Kai','kai'];objNames=[
+        {name:'Jani',country:'Norway'},
+        {name:'Hege',country:'Sweden'},
+        {name:'Kai',country:'Denmark'}]">
+            <p>使用 ng-repeat 来循环数组</p>
+            <ul>
+                <li ng-repeat="x in names">
+                {{ x }}
+                </li>
+            </ul>
+            <p>使用ng-repeat来循环对象数组</p>
+            <ul>
+                <li ng-repeat="x in objNames">
+                    {{ x.name + ', ' + x.country }}
+                </li>
+            </ul>
+        </div>
+</body>
+</html>

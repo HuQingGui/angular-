@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        Date format : <input ng-model="format"><hr>
+        Current time is : <span my-current-time="format"></span>
+    </div>
+</body>
+<script>
+    let app = angular.module('myApp',[]);
+    app.controller('myCtrl',($scope)=>{
+        $scope.format = 'M/d/yy h:mm:ss a';//格式化时间
+    })
+    app.directive('myCurrentTime',['$interval', 'dateFilter', function($interval, dateFilter){
+        function link(scope, element, attrs) {
+            let format,
+                timeoutId;
+
+            function updateTime() {
+                element.text(dateFilter(new Date(), format));
+            }
+
+            scope.$watch(attrs.myCurrentTime, function(value) {
+                format = value;
+                updateTime();
+            });
+
+            element.on('$destroy', function() {//销毁函数
+                $interval.cancel(timeoutId);
+            });
+
+            // start the UI update process; save the timeoutId for canceling
+            timeoutId = $interval(function() {
+                updateTime(); // update DOM
+            }, 1000);
+        }
+        return {
+            link: link
+        };
+    }])
+</script>
+</html>

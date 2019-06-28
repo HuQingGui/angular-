@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-init="foo='双向绑定'"> <!--注意：他是一个指令，这个ng-app的位置不是固定的，取决于你要定义哪一块为angular应用,表示angular在body内运行，-->
+    <div ng-controller="myCtrl"> <!--ng-controller="myCtrl" 属性是一个 AngularJS 指令。用于定义一个控制器。-->
+        <!-- 双方数据绑定ng-model，写法两种，如下，同vue一样数据双向绑定应用在表单元素上 -->
+        <input type="text" ng-model="foo"><br>
+        <input type="text" data-ng:model="foo"><br>
+        <p>双向绑定的内容：{{ foo }}</p>
+        <!-- 数据绑定ng-bind，如下，写法5种，同vue类似 -->
+        <span ng-bind="name"></span><br>
+        <span ng:bind="name"></span><br>
+        <span ng_bind="name"></span><br>
+        <span data-ng-bind="name"></span><br>
+        <span x-ng-bind="name"></span><br>
+    </div>
+</body>
+<script>
+    let app = angular.module('myApp',[]);
+    app.controller('myCtrl',($scope)=>{
+        $scope.name = '老王'
+    })
+</script>
+</html>

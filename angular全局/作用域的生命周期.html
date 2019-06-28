@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+    <!-- 
+        五个阶段
+        创建-注册监听-模型突变-观察-摧毁
+        link，regesit，mutation，apply，digest，destory
+        通常浏览器接收一个事件时会执行一段Javascript回调执行相关的处理，等回调执行完会自动更新DOM继续等待处理新事件。
+        当浏览器调用的js代码不在angular执行上下文中，angular将不会注意模型的更改。我们可以通过$apply方法，让模型的更改在angular的上下文中进行。
+        也就是说只有在$apply过程中的模型更改才会被angular甄别。例如,某个指令监听DOM事件(比如ng-click),必须在$apply方法中执行angular表达式。
+     -->
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <div mg-controller="myCtrl">
+        <!-- ng-model是angular里的数据双向绑定的指令，类似vue的v-model -->
+        <input type="text" ng-model="foo" value="=bar">
+        <!-- ng-click是angular的点击事件，类似vue的v-on:click -->
+        <button ng-click="changeFoo()">按钮</button>
+    </div>
+</body>
+<script src="XXXX.js"></script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl as ctrl">
+        <div>
+            All entries:
+            <span ng-repeat="entry in ctrl.array">{{ entry.name }}</span>
+        </div>
+        <div>
+            Entries that contain an 'a':
+            <span ng-repeat="entry in ctrl.filteredArray">{{ entry.name }}</span>
+        </div>
+    </div>
+</body>
+<script>
+let app = angular.module('myApp',[]);
+app.controller('myCtrl',(filterFilter)=>{
+    this.array = [
+      {name: 'asnowwolf'},
+      {name: 'why520crazy'},
+      {name: 'joe'},
+      {name: 'ckken'},
+      {name: 'lightma'},
+      {name: 'FrankyYang'}
+    ];
+    this.filteredArray = filterFilter(this.array, 'a');
+})
+</script>
+</html>

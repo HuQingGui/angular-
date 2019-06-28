@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+    <style>
+        body,html{
+            height: 100%;
+        }
+        .module{
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            position: fixed;
+            top: 0;
+            text-align: center;
+        }
+        .module input{
+            text-align: center;
+        }
+    </style>
+</head>
+<body ng-app="todo" ng-controller="todo">
+    <div class="head">
+        <button ng-click='changeFlag()'>添加待办事项</button>
+    </div>
+    <div class="container">
+        <ul>
+            <li ng-repeat="(key,item) in todos" ng-if="!item.flag">
+                <div>{{ item.text }}<button ng-click="success(key)">完成</button></div>
+            </li>
+        </ul>
+    </div>
+    <div ng-if="flag" class="module">
+        <input type="text" ng-model="thing"><button ng-click="add(thing)">确定</button>
+    </div>
+</body>
+<script>
+    let app = angular.module('todo',[]);
+    app.controller('todo',($scope)=>{
+        $scope.flag=false//初始化添加代办事项模态框
+        $scope.todos=[//待办事项列表
+            {
+                id : 0,
+                text : '你',
+                flag : false
+            },
+            {
+                id : 1,
+                text : '我',
+                flag : false
+            },
+            {
+                id : 2,
+                text : '他',
+                flag : false
+            }
+        ]
+        let id = $scope.length + 1
+        $scope.add=(thing)=>{//添加代办事项
+            $scope.todos.push({id : id,text:thing,flag:false})
+            $scope.flag=false
+        } 
+        $scope.changeFlag=()=>{//控制添加代办事项的模态框
+            $scope.flag=true
+        }
+        $scope.success=(index)=>{//将选中的事件列为已完成
+            try {
+                $scope.todos[index].flag=true
+            } catch (err) {
+                alert('出错了')
+                console.log(err)
+            }
+        }
+    })
+    
+</script>
+</html>

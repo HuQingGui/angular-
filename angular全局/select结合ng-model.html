@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myCtrl">
+        <select name="" id="" ng-model="chose">
+            <option disabled value="">请选择</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <span>Selected: {{ chose }}</span>
+    </div>
+</body>
+<script>
+    let app = angular.module('myApp',[])
+    app.controller('myCtrl',($scope)=>{
+        $scope.$watch('chose',(oldVale,newValue)=>{
+            console.log($scope.chose)
+            if($scope.chose == 'C'){
+                alert('恭喜你，选中C,不再是A了')
+            }
+        })
+    })
+</script>
+</html>
