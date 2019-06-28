@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/angular.js/1.7.0/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="myCtrl">
+        <button ng-click="add()">+</button>
+        <p ng-bind="sum"></p>
+    </div>
+</body>
+
+<script>
+    let app = angular.module('myApp',[]);
+    app.controller('myCtrl',($scope)=>{
+        $scope.num = 3;
+        $scope.$watch('num',(newValue,oldValue)=>{
+            $scope.sum = $scope.num + 1
+        }) 
+        $scope.add=function(){
+            $scope.num ++
+        }
+    })
+</script>
+</html>

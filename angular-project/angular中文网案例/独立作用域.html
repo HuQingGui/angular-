@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/angular.js/1.7.0/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="ctrlA">
+            <div shen></div>
+    </div>
+    <div ng-controller="ctrlB">
+            <div shen></div>
+    </div>
+</body>
+<script>
+    let app  = angular.module('myApp',[])
+    app.controller('ctrlA',function($scope){
+        $scope.customer = {
+            name : 'xioami',
+            address : '北京'
+        }
+    })
+    app.controller('ctrlB',function($scope){
+        $scope.customer = {
+            name : 'dami',
+            address : '南京'
+        }
+    })
+    app.directive('shen',function(){
+        return {
+            // restrict : 'E',
+            template: '姓名:  地址: '
+        }
+    })
+</script>
+</html>

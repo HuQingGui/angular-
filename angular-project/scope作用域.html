@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+	</head>
+	<body>
+		<!--
+			视图中，你不需要添加 $scope 前缀, 只需要添加属性名即可，如： {{carname}}
+			$rootScope (根作用域)在循环对象内外都可以访问。
+		-->
+		<div ng-app="myApp" ng-controller="myCtrl">
+			<h1>{{ carname }}</h1>
+			<input type="text" ng-model="name"/>
+			<h1>{{ greeting }}</h1>
+			<button ng-click="sayHellow()">点我</button>
+			<li ng-repeat= " x in names ">{{ x }}</li>
+			<li ng-repeat=" x in names ">{{ x }} {{ lastname }}</li>
+		</div>
+	</body>
+	<script type="text/javascript">
+		let app = angular.module('myApp',[]);
+		app.controller('myCtrl',function($scope,$rootScope){
+			$scope.carname="奔驰"
+			$scope.name="小明"
+			$scope.sayHellow=function(){
+				$scope.greeting = 'Hellow' + $scope.name + '!'
+			}
+			$scope.names = ['李哥','王哥','三哥']
+			$rootScope.lastname = 'Refsnes'
+		})
+	</script>
+</html>

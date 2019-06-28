@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/angular.js/1.7.0/angular.min.js"></script>
+</head>
+<body>
+    <div  ng-app="myApp" ng-controller="myCtrl">
+        {{ number | getwan }}
+        <!-- <span ng-bind="number"></span> -->
+    </div>
+</body>
+<script>
+    let app = angular.module('myApp',[])
+    app.controller('myCtrl',($scope)=>{
+        $scope.number = 50000
+    })
+    app.filter('getwan',()=>{
+        return (number)=>{
+			if(number>10000){
+                return number/10000 + '万'
+            }else{
+                return number
+            }
+		}
+    })
+</script>
+</html>

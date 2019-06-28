@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+	</head>
+	<body>
+		<!--
+        	作者：offline
+        	时间：2019-06-27
+        	描述：
+        	类似于 JavaScript 表达式，AngularJS 表达式可以包含字母，操作符，变量。
+			与 JavaScript 表达式不同，AngularJS 表达式可以写在 HTML 中。
+			
+			与 JavaScript 表达式不同，AngularJS 表达式不支持条件判断，循环及异常。
+			
+			与 JavaScript 表达式不同，AngularJS 表达式支持过滤器。
+        -->
+		<div ng-app="" ng-init=" a=1;b=2;firstName='lisa';lastName='john';person={name:'John',age:35};point=[1,2,3,4] ">
+			<p> 表达式1 {{ 5 + 5}}</p>
+			<p> 表达式2 {{ a + b}}</p>
+			<p 总价: <span ng-bind=" a + b "></span></p>
+			<p> 姓名：{{ firstName + ' ' +lastName }}</p>
+			<p> 姓名：<span ng-bind=" firstName + ' ' +lastName "></span></p>
+			<p> 他的名为：{{ person.name }}</p>
+			<p> 他的年龄为：<span ng-bind="person.age"></span></p>
+			<p> 我选择了第{{ point[2] }}个 </p>
+			<p> 第四个值为<span ng-bind="point[3]"></span></p>
+		</div>
+	</body>
+</html>
